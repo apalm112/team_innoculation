@@ -15,7 +15,11 @@ app.listen(port, function() {
   console.log('Server started on port ' + port + '!');
 });
 
-http.get('https://data.wa.gov/resource/rfq4-2k5i.json', function(res) {
+var url = 'https://data.wa.gov/resource/rfq4-2k5i.json?' + '$limit=3000&' + '$$app_token=' + process.env.WA_DATA_TOKEN;
+
+console.log(url);
+
+http.get(url, function(res) {
   var body = '';
 
   res.on('data', function (chunk) {
@@ -24,7 +28,7 @@ http.get('https://data.wa.gov/resource/rfq4-2k5i.json', function(res) {
 
   res.on('end', function() {
     var socrataResponse = JSON.parse(body);
-    console.log(socrataResponse);
+    console.log(socrataResponse.length);
   });
 }).on('error', function(e) {
   console.log('Got an error: ');
