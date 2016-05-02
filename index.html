@@ -10,7 +10,7 @@
     <!-- <script id="map-template" type="text/x-handlebars-template">
       <input id="textAddress" type="text" placeholder="Pick School">
       <button type="submit" id="map-submit">Search</button>
-      <section id="map-canvas" class="clearfix" data-map="{{map}}"></section>
+      <div id="map-canvas" class="clearfix" style="width: 400px; height: 400px;"></div>
     </script> -->
     <script id="about-template" type="text/x-handlebars-template">
       <h1>About Us And Stuff</h1>
@@ -36,7 +36,7 @@
 
       <input id="textAddress" type="text" placeholder="Pick School">
       <button type="submit" id="map-submit">Search</button>
-      <div id="map-canvas"></div>
+      <div id="map-canvas" style="width: 400px; height: 400px;"></div>
 
       <h1>Innoculation WA State Schoolz</h1>
         <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name">
@@ -51,7 +51,9 @@
 
     <script src="vendors/scripts/jquery-2.2.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ&libraries=visualization&callback=initMap">
+    </script>
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
     <script src="vendors/scripts/page.js"></script>
 
