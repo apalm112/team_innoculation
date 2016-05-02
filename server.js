@@ -28,6 +28,10 @@ app.get('/updatelatlonindatabase', function (request, response) {
   // //  do some stuff once
   // }));
 });
+app.get('/updatefirebasedatabase', function (request, response) {
+  console.log('New request:', request.url);
+  checkFbData();
+});
 
 var updateLatLonInDataBase = function () {
 //  console.log('do stuff here like update database');
@@ -38,7 +42,7 @@ var updateLatLonInDataBase = function () {
       var key = childSnapshot.key();
       // childData will be the actual contents of the child
       var childData = childSnapshot.val();
-      console.log(childData.hasOwnProperty('lat'));
+    //  console.log(childData.hasOwnProperty('lat'));
       if (childData.hasOwnProperty('lat') === false) {
         //call google and get address then save back to firedb
         getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
@@ -106,4 +110,3 @@ var getSocrata = function() {
     });
   });
 };
-checkFbData();
