@@ -33,17 +33,20 @@
       </nav>
     </header>
     <main id="main-page">
+      <section id="home-container">
+        <h1>Innoculation WA State Schoolz</h1>
+          <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name">
+          <button type="submit" id="submit" name="school">Search for Schoolz</button>
+        <article>
+          <p>Ipsum yo Adam is the shiznit we are just creating the longest filler run-on we can so there is content to read.  No one will read this anyway hahahahahahahahah!</p>
+        </article>
+      </section>
 
-      <input id="textAddress" type="text" placeholder="Pick School">
-      <button type="submit" id="map-submit">Search</button>
-      <div id="map-canvas" style="width: 400px; height: 400px;"></div>
-
-      <h1>Innoculation WA State Schoolz</h1>
-        <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name">
-        <button type="submit" id="submit" name="school">Search for Schoolz</button>
-      <article>
-        <p>Ipsum yo Adam is the shiznit we are just creating the longest filler run-on we can so there is content to read.  No one will read this anyway hahahahahahahahah!</p>
-      </article>
+      <section id="map-container">
+        <input id="textAddress" type="text" placeholder="Pick School">
+        <button type="submit" id="map-submit">Search</button>
+        <div id="map-canvas" style="width: 400px; height: 400px;"></div>
+      </section>
     </main>
     <footer>
   		&copy; 2016 Team Inoculation | Inoculate The Planet Sponsored by The Umbrella Corp.
@@ -51,7 +54,7 @@
 
     <script src="vendors/scripts/jquery-2.2.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-    <script async defer
+    <script 
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ&libraries=visualization">
     </script>
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
@@ -64,5 +67,8 @@
     <script src="scripts/controller/mapController.js"></script>
 
     <script src="scripts/controller/routes.js"></script>
+
+
+    <!-- <script type="text/javascript">google.maps.event.addDomListener(window, 'load', initMap);</script> -->
   </body>
 </html>
