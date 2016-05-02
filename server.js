@@ -38,10 +38,11 @@ var updateLatLonInDataBase = function () {
       var key = childSnapshot.key();
       // childData will be the actual contents of the child
       var childData = childSnapshot.val();
-    //  console.log(childData);
-      getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
-      //call google and get address
-      //then save back to firedb
+      console.log(childData.hasOwnProperty('lat'));
+      if (childData.hasOwnProperty('lat') === false) {
+        //call google and get address then save back to firedb
+        getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
+      }
     });
   });
 };
