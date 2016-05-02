@@ -7,11 +7,11 @@
   	<link href="vendors/styles/normalize.css" type="text/css" rel="stylesheet">
   	<link href="styles/base/base.css" type="text/css" rel="stylesheet">
   	<link href="styles/module/module.css" type="text/css" rel="stylesheet">
-    <script id="map-template" type="text/x-handlebars-template">
-      <input id="map-pop" type="text" placeholder="Pick School">
+    <!-- <script id="map-template" type="text/x-handlebars-template">
+      <input id="textAddress" type="text" placeholder="Pick School">
       <button type="submit" id="map-submit">Search</button>
-      <section id="map-canvas" class="clearfix" data-map="{{map}}"></section>
-    </script>
+      <div id="map-canvas" style="width: 400px; height: 400px;"></div>
+    </script> -->
     <script id="about-template" type="text/x-handlebars-template">
       <h1>About Us And Stuff</h1>
         <ul>
@@ -33,6 +33,11 @@
       </nav>
     </header>
     <main id="main-page">
+
+      <input id="textAddress" type="text" placeholder="Pick School">
+      <button type="submit" id="map-submit">Search</button>
+      <div id="map-canvas" style="width: 400px; height: 400px;"></div>
+
       <h1>Innoculation WA State Schoolz</h1>
         <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name">
         <button type="submit" id="submit" name="school">Search for Schoolz</button>
@@ -46,17 +51,17 @@
 
     <script src="vendors/scripts/jquery-2.2.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ&libraries=visualization">
+    </script>
     <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key+AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ"></script>
     <script src="vendors/scripts/page.js"></script>
 
     <script src="scripts/model/map.js"></script>
-    <script src="scripts/model/about.js"></script>
 
     <script src="scripts/view/mapView.js"></script>
 
     <script src="scripts/controller/mapController.js"></script>
-    <script src="scripts/controller/aboutController.js"></script>
 
     <script src="scripts/controller/routes.js"></script>
   </body>
