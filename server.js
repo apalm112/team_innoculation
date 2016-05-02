@@ -22,8 +22,8 @@ app.get('/updatelatlonindatabase', function (request, response) {
 });
 
 var updateLatLonInDataBase = function () {
-  console.log("do stuff here like update database");
-  fireDataBase.once("value", function (snapshot) {
+  console.log('do stuff here like update database');
+  fireDataBase.once('value', function (snapshot) {
     // The callback function will get called twice, once for "fred" and once for "barney"
     snapshot.forEach(function (childSnapshot) {
       // key will be "fred" the first time and "barney" the second time
@@ -31,6 +31,7 @@ var updateLatLonInDataBase = function () {
       // childData will be the actual contents of the child
       var childData = childSnapshot.val();
       console.log(childData);
+      getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
       //call google and get address
       //then save back to firedb
     });
@@ -51,26 +52,29 @@ app.listen(port, function () {
 //Reference: https://developers.google.com/maps/documentation/geocoding/intro#geocoding
 //Example Call: https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
 
-// var getLocationFromAddress = function (address, city, state) {
-//   url = 'https://maps.googleapis.com/maps/api/geocode/json?' +
-//     'address=' + address.replace(/ /g, '+') +
-//     ',' + city.replace(/ /g, '+') +
-//     ',' + state +
-//     '&key=' + process.env.GOOGLE_MAP_KEY;
-//
-//   http.get(url, function (res) {
-//     var body = '';
-//     res.on('data', function (chunk) {
-//       body += chunk;
-//     });
-//     res.on('end', function () {
-//       var googleApiData = JSON.parse(body);
-//     //  callback to update database (new lat lon)
-//     }).on('error', function (e) {
-//       console.log('Got an error: ');
-//     });
-//   });
-// };
+var getLocationFromAddressandSaveToDB = function (address, city, state, key) {
+  url = 'https://maps.googleapis.com/maps/api/geocode/json?' +
+    'address=' + address.replace(/ /g, '+') +
+    ',' + city.replace(/ /g, '+') +
+    ',' + state +
+    '&key=' + process.env.GOOGLE_MAP_KEY;
+
+  http.get(url, function (res) {
+    var body = '';
+    res.on('data', function (chunk) {
+      body += chunk;
+    });
+    res.on('end', function () {
+      var googleApiData = JSON.parse(body);
+    //  callback to update database (new lat lon)
+      console.log(googleApiData.results[0].geometry.location);
+      console.log(key);
+      fireDataBase.child(key).update({lat:googleApiData.results[0].geometry.location.lat, lng: googleApiData.results[0].geometry.location.lng});
+    }).on('error', function (e) {
+      console.log('Got an error: ');
+    });
+  });
+};
 
 /// new function
 // get firebase entries and /map over
