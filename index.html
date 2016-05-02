@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Project Inoculate Washington State</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  	<link href="vendors/styles/normalize.css" type="text/css" rel="stylesheet">
+  	<link href="styles/base/base.css" type="text/css" rel="stylesheet">
+  	<link href="styles/module/module.css" type="text/css" rel="stylesheet">
+    <script id="map-template" type="text/x-handlebars-template">
+      <input id="map-pop" type="text" placeholder="Pick School">
+      <button type="submit" id="map-submit">Search</button>
+      <section id="map-canvas" class="clearfix" data-map="{{map}}"></section>
+    </script>
+    <script id="about-template" type="text/x-handlebars-template">
+      <h1>About Us And Stuff</h1>
+        <ul>
+          <li>Aliza Pilisuk</li>
+          <li>Drew Ferris</li>
+          <li>Dustin McBride</li>
+          <li>Victor Benavente</li>
+          <li>Adam Palmer</li>
+        </ul>
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/map">Map</a></li>
+          <li><a href="/about">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main id="main-page">
+      <h1>Innoculation WA State Schoolz</h1>
+        <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name">
+        <button type="submit" id="submit" name="school">Search for Schoolz</button>
+      <article>
+        <p>Ipsum yo Adam is the shiznit we are just creating the longest filler run-on we can so there is content to read.  No one will read this anyway hahahahahahahahah!</p>
+      </article>
+    </main>
+    <footer>
+  		&copy; 2016 Team Inoculation | Inoculate The Planet Sponsored by The Umbrella Corp.
+  	</footer>
+
+    <script src="vendors/scripts/jquery-2.2.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key+AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ"></script>
+    <script src="vendors/scripts/page.js"></script>
+
+    <script src="scripts/model/map.js"></script>
+    <script src="scripts/model/about.js"></script>
+
+    <script src="scripts/view/mapView.js"></script>
+
+    <script src="scripts/controller/mapController.js"></script>
+    <script src="scripts/controller/aboutController.js"></script>
+
+    <script src="scripts/controller/routes.js"></script>
+  </body>
+</html>
