@@ -6,7 +6,15 @@ var requestProxy = require('express-request-proxy'),
   app = express();
 
 fireDataBase = new Firebase('https://intense-heat-7080.firebaseio.com');
-fireDataBase.remove();
+// fireDataBase.remove();
+
+var checkFbData = function(){
+  fireDataBase.child('schools').once('value', function (snapshot) {
+    if (snapshot.exists() === false){
+      getSocrata();
+    }
+  });
+};
 
 //changed limit to 3 for testing of google maps api call
 var url = 'https://data.wa.gov/resource/rfq4-2k5i.json?' + '$limit=3&' + '$$app_token=' + process.env.WA_DATA_TOKEN;
@@ -20,20 +28,25 @@ app.get('/updatelatlonindatabase', function (request, response) {
   // //  do some stuff once
   // }));
 });
+app.get('/updatefirebasedatabase', function (request, response) {
+  console.log('New request:', request.url);
+  checkFbData();
+});
 
 var updateLatLonInDataBase = function () {
-  console.log('do stuff here like update database');
-  fireDataBase.once('value', function (snapshot) {
+//  console.log('do stuff here like update database');
+  fireDataBase.child('schools').once('value', function (snapshot) {
     // The callback function will get called twice, once for "fred" and once for "barney"
     snapshot.forEach(function (childSnapshot) {
       // key will be "fred" the first time and "barney" the second time
       var key = childSnapshot.key();
       // childData will be the actual contents of the child
       var childData = childSnapshot.val();
-      console.log(childData);
-      getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
-      //call google and get address
-      //then save back to firedb
+    //  console.log(childData.hasOwnProperty('lat'));
+      if (childData.hasOwnProperty('lat') === false) {
+        //call google and get address then save back to firedb
+        getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
+      }
     });
   });
 };
@@ -67,9 +80,9 @@ var getLocationFromAddressandSaveToDB = function (address, city, state, key) {
     res.on('end', function () {
       var googleApiData = JSON.parse(body);
     //  callback to update database (new lat lon)
-      console.log(googleApiData.results[0].geometry.location);
-      console.log(key);
-      fireDataBase.child(key).update({lat:googleApiData.results[0].geometry.location.lat, lng: googleApiData.results[0].geometry.location.lng});
+    //  console.log(googleApiData.results[0].geometry.location);
+    //  console.log(key);
+      fireDataBase.child('schools').child(key).update({lat:googleApiData.results[0].geometry.location.lat, lng: googleApiData.results[0].geometry.location.lng});
     }).on('error', function (e) {
       console.log('Got an error: ');
     });
@@ -81,17 +94,19 @@ var getLocationFromAddressandSaveToDB = function (address, city, state, key) {
 //make call to googleapi for each entry
 //update firebase entry
 
-http.get(url, function (res) {
-  var body = '';
-  res.on('data', function (chunk) {
-    body += chunk;
-  });
-  res.on('end', function () {
-    var socrataResponse = JSON.parse(body);
-    socrataResponse.map(function (school) {
-      fireDataBase.push(school);
+var getSocrata = function() {
+  http.get(url, function (res) {
+    var body = '';
+    res.on('data', function (chunk) {
+      body += chunk;
     });
-  }).on('error', function (e) {
-    console.log('Got an error: ');
+    res.on('end', function () {
+      var socrataResponse = JSON.parse(body);
+      socrataResponse.map(function (school) {
+        fireDataBase.child('schools').push(school);
+      });
+    }).on('error', function (e) {
+      console.log('Got an error: ');
+    });
   });
-});
+};
