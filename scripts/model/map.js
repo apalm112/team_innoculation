@@ -28,7 +28,7 @@ function initMap(latLng) {
       style: google.maps.ZoomControlStyle.LARGE,
       position: google.maps.ControlPosition.RIGHT_CENTER
     },
-    disableDoubleClickZoom: true
+    disableDoubleClickZoom: false
   });
 
   var marker = new google.maps.Marker({

@@ -23,7 +23,7 @@
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
 
     ref.on('value', function(snapshot) {
-      console.log(snapshot.val());
+      ctx.schools = snapshot.val();
       next();
     }, function(errorObject) {
       console.log('The read failed: ' + errorObject.code);
@@ -32,8 +32,9 @@
 
   mapController.renderSchools = function(ctx, next) {
 
-    console.log('works');
-    
+    $(ctx.schools.schools).map(function() {
+      console.log(ctx.schools.schools);
+    });
   };
 
   module.mapController = mapController;

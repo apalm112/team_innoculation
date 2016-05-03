@@ -10,6 +10,8 @@
       <link href="/styles/base/base.css" type="text/css" rel="stylesheet">
       <link href="/styles/module/map.css" type="text/css" rel="stylesheet">
       <link href="/styles/module/nav.css" type="text/css" rel="stylesheet">
+      <link href="/styles/module/chart.css" type="text/css" rel="stylesheet">
+
       <!-- <script id="map-template" type="text/x-handlebars-template">
       <input id="textAddress" type="text" placeholder="Pick School">
       <button type="submit" id="map-submit">Search</button>
@@ -48,7 +50,7 @@
 
                   <button type="submit" id="submit" name="school">Search for Schoolz</button>
                   <article>
-                        <p>Ipsum yo Adam is the shiznit we are just creating the longest filler run-on we can so there is content to read. No one will read this anyway hahahahahahahahah!</p>
+                        <p>Ipsum yo Big Jim's Lumber and Pizza Palace is the shiznit we are just creating the longest filler run-on we can so there is content to read. No one will read this anyway hahahahahahahahah!</p>
                   </article>
             </section>
 
@@ -56,6 +58,10 @@
                   <input id="textAddress" type="text" placeholder="Pick School">
                   <button type="submit" id="map-submit">Search</button>
                   <div id="map-canvas"></div>
+                  <div id="toggle">TOGGLE HERE</div>
+                  <div id="chart-display">
+                    <canvas id="chart-canvas" max-width="50%" max-height="200px"></canvas>
+                  </div>
             </section>
       </main>
       <footer>
@@ -70,9 +76,14 @@
               async defer></script> -->
 
       <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-      <script src="/vendors/scripts/page.js"></script>
 
-      <script src="/scripts/model/map.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.min.js"></script>
+      <script src="vendors/scripts/page.js"></script>
+
+      <script src="scripts/model/map.js"></script>
+      <script src="scripts/model/chart.js"></script>
+      <script src="scripts/view/chartView.js"></script>
+
 
       <script src="/scripts/view/mapView.js"></script>
       <script src="/scripts/view/indexView.js"></script>
