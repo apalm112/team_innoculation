@@ -5,6 +5,7 @@
     initMap();
     $('#home-container').hide();
     $('#map-container').show();
+    $('#chart-template').show();
     // next();
   };
 
