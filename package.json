@@ -1,0 +1,25 @@
+{
+  "name": "inoculation_project",
+  "version": "1.0.0",
+  "description": "team_project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apalm112/team_inoculation.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3",
+    "express-request-proxy": "1.0.10",
+    "firebase": "^2.4.2"
+  },
+  "bugs": {
+    "url": "https://github.com/apalm112/team_inoculation/issues"
+  },
+  "homepage": "https://github.com/apalm112/team_inoculation#readme"
+}
