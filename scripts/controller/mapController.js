@@ -32,9 +32,29 @@
 
   mapController.renderSchools = function(ctx, next) {
 
-    $(ctx.schools.schools).map(function() {
-      console.log(ctx.schools.schools);
+    console.log(ctx.schools.schools, 'object we are looking for');
+
+
+
+    // for (var prop in ctx.schools.schools) {
+    //   // debugger;
+    //   console.log(prop);
+    // }
+
+    // var test = Object.keys(ctx.schools.schools);
+    //
+    // console.log(test);
+
+    // $(ctx.schools.schools).map(function) {
+    //   var id = ctx.schools.schools;
+    //
+    //   // [/\S+/]
+    //   console.log(id);
+    // };
+    $(ctx.schools.schools).map(function (){
+      console.log(this.lat);
     });
+
   };
 
   module.mapController = mapController;
