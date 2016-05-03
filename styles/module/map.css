@@ -3,10 +3,6 @@
   height: 420px;
 }
 
-#map-container{
-  position:relative;
-}
-
 #map-canvas{
   position: relative
 }
