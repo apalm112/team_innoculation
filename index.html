@@ -56,6 +56,9 @@
                   <input id="textAddress" type="text" placeholder="Pick School">
                   <button type="submit" id="map-submit">Search</button>
                   <div id="map-canvas"></div>
+                  <div id="chart-display">
+                    <canvas id="chart-canvas" width="400px" height="400px"></canvas>
+                  </div>
             </section>
       </main>
       <footer>
@@ -70,9 +73,11 @@
               async defer></script> -->
 
       <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.min.js"></script>
       <script src="vendors/scripts/page.js"></script>
 
       <script src="scripts/model/map.js"></script>
+      <script src="scripts/model/chart.js"></script>
 
       <script src="scripts/view/mapView.js"></script>
       <script src="scripts/view/indexView.js"></script>
