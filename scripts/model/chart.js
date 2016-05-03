@@ -5,7 +5,7 @@ function displayChart(){
   var findChartDisplay = $('#chart-display');
   var ctx = $('#chart-canvas');
   var data = {
-    labels: ['Diphtheria Tetanus', 'Pertussis', 'Measles Mumps and Rubella', 'Polio', 'Hepatitis B', 'Varicella'],
+    labels: ['Tetanus', 'Pertussis', 'MMR', 'Polio', 'Hep B', 'Varicella'],
     datasets: [
       {
         label: schoolName,
