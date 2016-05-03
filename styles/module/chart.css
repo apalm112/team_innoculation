@@ -8,6 +8,7 @@
   position: absolute;
   z-index: 1;
 }
+
 #toggle {
   background-color: lightblue;
   color: black;
