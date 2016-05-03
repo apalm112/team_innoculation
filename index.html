@@ -33,7 +33,7 @@
       <header>
         <nav class="main-nav">
           <div class="icon-menu"></div>
-                  <ul>
+                  <ul class="nav-items">
                         <li class="tab"><a href="/" class="icon-home3">Home</a></li>
                         <li class="tab"><a href="/map" class="icon-location">Map</a></li>
                         <li class="tab"><a href="/about" class="icon-users">About</a></li>
@@ -48,7 +48,7 @@
                         <input id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text"></input>
                   </div>
 
-                  <button type="submit" id="submit" name="school">Search for Schoolz</button>
+                  <button type="submit" id="submit" name="school">Search by address</button>
                   <article>
                         <p>Ipsum yo Big Jim's Lumber and Pizza Palace is the shiznit we are just creating the longest filler run-on we can so there is content to read. No one will read this anyway hahahahahahahahah!</p>
                   </article>
@@ -56,12 +56,10 @@
 
             <section id="map-container">
                   <input id="textAddress" type="text" placeholder="Pick School">
-                  <button type="submit" id="map-submit">Search</button>
+                  <button type="submit" id="map-submit">Search</button><br>
+                  <canvas id="chart-canvas"></canvas>
                   <div id="map-canvas"></div>
                   <div id="toggle">TOGGLE HERE</div>
-                  <div id="chart-display">
-                    <canvas id="chart-canvas" max-width="50%" max-height="200px"></canvas>
-                  </div>
             </section>
       </main>
       <footer>
@@ -84,9 +82,9 @@
       <script src="scripts/model/chart.js"></script>
       <script src="scripts/view/chartView.js"></script>
 
-
-      <script src="/scripts/view/mapView.js"></script>
-      <script src="/scripts/view/indexView.js"></script>
+      <script src="scripts/view/mapView.js"></script>
+      <script src="scripts/view/indexView.js"></script>
+      <script src="scripts/view/navView.js"></script>
 
       <script src="/scripts/controller/mapController.js"></script>
 
