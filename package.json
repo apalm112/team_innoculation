@@ -14,7 +14,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^2.0.2",
     "express": "^4.13.3",
     "express-request-proxy": "1.0.10",
     "firebase": "^2.4.2"
