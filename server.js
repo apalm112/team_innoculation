@@ -30,8 +30,8 @@ app.listen(port, function () {
   console.log('Server started on port ' + port + '!');
 });
 
-var getSocrata = function() {
-  var url = 'https://data.wa.gov/resource/rfq4-2k5i.json?' + '$limit=200&' + '$$app_token=' + process.env.WA_DATA_TOKEN;
+var getSocrata = function () {
+  var url = 'https://data.wa.gov/resource/rfq4-2k5i.json?' + '$limit=3000&' + '$$app_token=' + process.env.WA_DATA_TOKEN;
   http.get(url, function (res) {
     var body = '';
     res.on('data', function (chunk) {
@@ -48,28 +48,37 @@ var getSocrata = function() {
   });
 };
 
-var checkFireDBforData = function(){
+var checkFireDBforData = function () {
   fireDataBase.child('schools').once('value', function (snapshot) {
-    if (snapshot.exists() === false){
+    if (snapshot.exists() === false) {
       getSocrata();
     }
   });
 };
 
 var updateLatLngInDataBase = function () {
-//  console.log('do stuff here like update database');
+  //  console.log('do stuff here like update database');
   fireDataBase.child('schools').once('value', function (snapshot) {
     // The callback function will get called twice, once for "fred" and once for "barney"
+    counter = 0;
+    stop = 80;
     snapshot.forEach(function (childSnapshot) {
       // key will be "fred" the first time and "barney" the second time
       var key = childSnapshot.key();
       // childData will be the actual contents of the child
       var childData = childSnapshot.val();
-    //  console.log(childData.hasOwnProperty('lat'));
+      //  console.log(childData.hasOwnProperty('lat'));
+
       if (childData.hasOwnProperty('lat') === false) {
         //call google and get address then save back to firedb
-        getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
-      }
+        counter = counter + 1;
+        if (counter < stop) {
+          console.log('Calling Google api for lat lng of: ' + childData.address + childData.city);
+          getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
+        }
+      } else {
+        //console.log('Skipping :' + childData.address);
+      };
     });
   });
 };
@@ -87,9 +96,16 @@ var getLocationFromAddressandSaveToDB = function (address, city, state, key) {
     });
     res.on('end', function () {
       var googleApiData = JSON.parse(body);
+      console.log("LOG :", googleApiData.status);
+      if (googleApiData.status === "OK") {
+        fireDataBase.child('schools').child(key).update({
+          lat: googleApiData.results[0].geometry.location.lat,
+          lng: googleApiData.results[0].geometry.location.lng
+        });
 
-      fireDataBase.child('schools').child(key).update({lat:googleApiData.results[0].geometry.location.lat, lng: googleApiData.results[0].geometry.location.lng});
-      console.log(fireDataBase.child('schools').child(key));
+        console.log('Finished call:' + googleApiData.results[0].geometry.location.lat + googleApiData.results[0].geometry.location.lng);
+      }
+      //console.log(fireDataBase.child('schools').child(key));
     }).on('error', function (e) {
       console.log('Got an error: ');
     });
