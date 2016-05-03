@@ -1,0 +1,12 @@
+#chart-canvas {
+  max-width: 100%;
+  display: none;
+}
+
+
+#toggle {
+  background-color: lightblue;
+  color: black;
+  width: 100%;
+  height: 20px;
+}
