@@ -2,7 +2,7 @@
   var homeController = {
     index: function() {
       console.log('working');
-      $('#map-container').hide();
+      $('#map-elements').hide();
       $('#home-container').show();
     }
   };

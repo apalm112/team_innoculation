@@ -1,11 +1,26 @@
-function initMap() {
+function initMap(latLng) {
+  console.log(latLng);
+
+  if(navigator.geolocation) {
+    function error(err) {
+      console.warn('ERROR(' + err.code + '): ' + err.message);
+    }
+
+    function success(pos) {
+      userCords = pos.coords;
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    alert('Geolocation is not supported in your browser');
+  }
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center: {
-      lat: 47.4235,
-      lng: -120.3103
-    },
-    zoom: 6,
+    center:latLng,
+    //   lat: lat,
+    //   lng: lng
+
+    zoom: 15,
     panControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_LEFT
     },
@@ -13,9 +28,14 @@ function initMap() {
       style: google.maps.ZoomControlStyle.LARGE,
       position: google.maps.ControlPosition.RIGHT_CENTER
     },
-    disableDoubleClickZoom: true
+    disableDoubleClickZoom: false
   });
 
+  var marker = new google.maps.Marker({
+    position: latLng,
+    map: map,
+    title: 'Hello World!'
+  });
 };
 
 function hideMap() {
