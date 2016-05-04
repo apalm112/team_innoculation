@@ -14,10 +14,24 @@ function initMap (latLng) {
     alert('Geolocation is not supported in your browser');
   }
 
-  if (latLng === false) {
-    map = new google.maps.Map(document.getElementById('mapcanvas'), {
+  if (!latLng) {
+    map = new google.maps.Map(document.getElementById('map-canvas'), {
       center: {lat: 47.3232,
       lng: -120.3232},
+      zoom: 7,
+      panControlOptions: {
+        position: google.maps.ControlPosition.BOTTOM_LEFT
+      },
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      disableDoubleClickZoom: false
+    });
+
+  } else {
+    map = new google.maps.Map(document.getElementById('map-canvas'), {
+      center:latLng,
       zoom: 15,
       panControlOptions: {
         position: google.maps.ControlPosition.BOTTOM_LEFT
@@ -28,23 +42,7 @@ function initMap (latLng) {
       },
       disableDoubleClickZoom: false
     });
-  }
-  map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center:latLng,
-    //   lat: lat,
-    //   lng: lng
-
-    zoom: 15,
-    panControlOptions: {
-      position: google.maps.ControlPosition.BOTTOM_LEFT
-    },
-    zoomControlOptions: {
-      style: google.maps.ZoomControlStyle.LARGE,
-      position: google.maps.ControlPosition.RIGHT_CENTER
-    },
-    disableDoubleClickZoom: false
-  });
-
+  };
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
