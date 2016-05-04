@@ -10,9 +10,11 @@
       lng: parseFloat(ctx.params.lng)
     };
 
+    initMap();
     initMap(latLng);
     //need to add schools as a parameter
     $('#home-container').hide();
+    $('#map-container').show();
     $('#map-elements').show();
     next();
   };

@@ -14,6 +14,21 @@ function initMap (latLng) {
     alert('Geolocation is not supported in your browser');
   }
 
+  if (latLng === false) {
+    map = new google.maps.Map(document.getElementById('mapcanvas'), {
+      center: {lat: 47.3232,
+      lng: -120.3232},
+      zoom: 15,
+      panControlOptions: {
+        position: google.maps.ControlPosition.BOTTOM_LEFT
+      },
+      zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.LARGE,
+        position: google.maps.ControlPosition.RIGHT_CENTER
+      },
+      disableDoubleClickZoom: false
+    });
+  }
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     center:latLng,
     //   lat: lat,
