@@ -4,7 +4,7 @@
 
     var placeSearch, autocomplete;
 
-    indexView.initAutocomplete = function() {
+    indexView.initAutocomplete = function(ctx, next) {
           // Create the autocomplete object, restricting the search to geographical
           // location types.
       autocomplete = new google.maps.places.Autocomplete(
@@ -12,6 +12,7 @@
               (document.getElementById('autocomplete')), {
                 types: ['geocode']
               });
+      next();
     };
           // When the user selects an address from the dropdown, populate the address
           // fields in the form.
