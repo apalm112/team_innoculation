@@ -1,6 +1,5 @@
 function initMap(latLng) {
-  console.log(latLng);
-
+  
   if(navigator.geolocation) {
     function error(err) {
       console.warn('ERROR(' + err.code + '): ' + err.message);
