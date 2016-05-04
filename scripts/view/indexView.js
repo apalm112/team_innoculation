@@ -32,7 +32,8 @@
           });
           autocomplete.setBounds(circle.getBounds());
         });
-      }
+      };
+
       $('button').on('click', function() {
         console.log(autocomplete.getPlace());
         lat = autocomplete.getPlace().geometry.location.lat();
