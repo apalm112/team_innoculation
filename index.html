@@ -17,8 +17,8 @@
 
       <div class="top-bar">
             <div class="top-bar-left">
+              <div class="icon-menu"></div>
                   <ul class="menu">
-                        <li class="menu-text">Blog</li>
                         <li class="tab"><a href="/" class="icon-home3">Home</a></li>
                         <li class="tab"><a href="/map" class="icon-location">Map</a></li>
                         <li class="tab"><a href="/about" class="icon-users">About</a></li>
@@ -40,18 +40,26 @@
             <article>
                   <p>Ipsum yo Big Jim's Lumber and Pizza Palace is the shiznit we are just creating the longest filler run-on we can so there is content to read. No one will read this anyway hahahahahahahahah!</p>
             </article>
+            <div id="locationField">
+              <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
+            </div>
+      <button type="submit" id="submit" class="button radius" name="school">Search by address</button><br>
       </section>
 
       <section id="map-container">
-        <div id="locationField">
-          <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
-        </div>
-        <button type="submit" id="submit" name="school">Search by address</button><br>                <div id="map-elements">
+
+  <div id="map-elements">
+    <div class="mapwrapper">
+      <div class="overlay">
+      <h3></h3>
+     </div>
             <canvas id="chart-canvas"></canvas>
             <div id="map-canvas"></div>
             <div id="toggle">TOGGLE HERE</div>
           </div>
+    </div>
       </section>
+
 
       </div>
 
@@ -59,7 +67,7 @@
 
 
       <script src="/vendors/scripts/jquery-2.2.0.js"></script>
-        <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+      <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
 
       <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
