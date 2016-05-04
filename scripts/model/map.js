@@ -1,5 +1,5 @@
 function initMap(latLng) {
-  
+
   if(navigator.geolocation) {
     function error(err) {
       console.warn('ERROR(' + err.code + '): ' + err.message);
@@ -33,7 +33,7 @@ function initMap(latLng) {
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    title: 'Hello World!'
+    title: 'Your address',
   });
 };
 
