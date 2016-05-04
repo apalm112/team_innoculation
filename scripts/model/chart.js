@@ -1,7 +1,7 @@
-var schoolName = 'Rainier Beach';
-var firebaseData = [1, 2, 1, 96];
+// var schoolName = 'Rainier Beach';
+// var firebaseData = [1, 2, 1, 96];
 
-function displayChart(){
+function displayChart(schoolName, firebaseData){
   var findChartDisplay = $('#chart-display');
   var ctx = $('#chart-canvas');
   var data = {
