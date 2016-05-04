@@ -43,11 +43,11 @@
           lng: ctx.schools[k].lng
         },
         school: ctx.schools[k].school_name,
-        percentPersonalExemption: ctx.schools[k].percent_with_personal_exemption,
-        percentReligiousExemption: ctx.schools[k].percent_with_religious_exemption,
-        percentMedicalExemption: ctx.schools[k].percent_with_medical_exemption,
-        percentTotalExemption: ctx.schools[k].percent_with_any_exemption,
-        percentCompletedImmunization: ctx.schools[k].percent_complete_for_all_immunizations,
+        percentPersonalExemption: Math.ceil(ctx.schools[k].percent_with_personal_exemption * 100),
+        percentReligiousExemption: Math.ceil(ctx.schools[k].percent_with_religious_exemption * 100),
+        percentMedicalExemption: Math.ceil(ctx.schools[k].percent_with_medical_exemption * 100),
+        percentTotalExemption: Math.ceil(ctx.schools[k].percent_with_any_exemption * 100),
+        percentCompletedImmunization: Math.ceil(ctx.schools[k].percent_complete_for_all_immunizations * 100),
         totalEnrollment: ctx.schools[k].k_12_enrollment
       });
     });
@@ -55,16 +55,24 @@
     schoolArray.map(function (school) {
       var marker = new google.maps.Marker({
         position: school.latLng,
-        content: '<h1>' + school.school + '</h1><p>Percent Personal Exemption: ' + school.percentPersonalExemption + '</p><p>Percent Religious Exemption: ' + school.percentReligiousExemption + '</p><p>Percent Medical Exemption: ' + school.percentMedicalExemption + '</p><p>Percent Total Exemption: ' + school.percentTotalExemption + '</p><p>Percent Completed Immunization: ' + school.percentCompletedImmunization + '</p><p>Total Enrollment: ' + school.totalEnrollment + '</p>'
+        content: '<h1>' + school.school + '</h1><p>Personal Exemption: ' + school.percentPersonalExemption + '%</p><p>Religious Exemption: ' + school.percentReligiousExemption + '%</p><p>Medical Exemption: ' + school.percentMedicalExemption + '%</p><p>Total Exemption: ' + school.percentTotalExemption + '%</p><p>Completed Immunization: ' + school.percentCompletedImmunization + '%</p><p>Total Enrollment: ' + school.totalEnrollment + '</p>',
+        key: school.key,
+        name1: school.school,
+        data1: [school.percentPersonalExemption, school.percentReligiousExemption, school.percentMedicalExemption, school.percentCompletedImmunization]
       });
       // var contentString = '<h1>' + schoolArray + '</h1>';
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
+        displayChart(marker.name1, marker.data1);
+        $('#chart-wrapper').slideToggle('slow');
+        $('#school-data h1').text(marker.name1);
       });
 
       var infoWindow = new google.maps.InfoWindow();
         // content: contentString
       infoWindow.setContent(marker.content);
+
+      var someArray = marker.content;
       // To add the marker to the map, call setMap();
       marker.setMap(map);
     });
