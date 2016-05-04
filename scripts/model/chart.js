@@ -1,8 +1,8 @@
-var schoolName = 'Rainier Beach';
-var firebaseData = [1, 2, 1, 96];
+// var schoolName = 'Rainier Beach';
+// var firebaseData = [1, 2, 1, 96];
 
-function displayChart(){
-  var findChartDisplay = $('#chart-display');
+function displayChart(schoolName, firebaseData){
+  // var findChartDisplay = $('#chart-display');
   var ctx = $('#chart-canvas');
   var data = {
     labels: ['Percent Personal Exemption', 'Percent Religious Exemption', 'Percent Medical Exemption', 'Percent Completed Immunization'],
