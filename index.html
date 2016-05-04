@@ -40,13 +40,13 @@
             <article>
                   <p>Ipsum yo Big Jim's Lumber and Pizza Palace is the shiznit we are just creating the longest filler run-on we can so there is content to read. No one will read this anyway hahahahahahahahah!</p>
             </article>
-            <div id="locationField">
-              <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
-            </div>
-      <button type="submit" id="submit" class="button radius" name="school">Search by address</button><br>
       </section>
 
       <section id="map-container">
+        <div id="locationField">
+          <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
+        </div>
+        <button type="submit" id="submit" class="button radius" name="school">Search by address</button><br>
 
   <div id="map-elements">
     <div class="mapwrapper">
@@ -80,6 +80,7 @@
 
       <script src="/scripts/controller/homeController.js"></script>
       <script src="/scripts/controller/mapController.js"></script>
+      <script src="/scripts/controller/aboutController.js"></script>
 
       <script src="/scripts/model/map.js"></script>
       <script src="/scripts/model/chart.js"></script>
