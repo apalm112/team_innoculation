@@ -1,4 +1,4 @@
-function initMap(latLng) {
+function initMap (latLng) {
 
   if(navigator.geolocation) {
     function error(err) {
