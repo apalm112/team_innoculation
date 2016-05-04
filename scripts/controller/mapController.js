@@ -11,7 +11,6 @@
     };
 
     initMap(latLng);
-    console.log(latLng);
     //need to add schools as a parameter
     $('#home-container').hide();
     $('#map-elements').show();
@@ -22,7 +21,8 @@
 
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
 
-    ref.once('value', function (snapshot) {
+     //setting limmit for testing
+    ref.child('schools').limitToFirst(20).once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
     }, function (errorObject) {
@@ -31,21 +31,21 @@
   };
 
   mapController.renderSchools = function (ctx, next) {
-
-    keys = Object.keys(ctx.schools.schools);
+    keys = Object.keys(ctx.schools);
     schoolArray = [];
     keys.map(function (k) {
       schoolArray.push({
         key: k,
         school: ctx.schools.schools[k].school_name,
         latLng: {
-          lat: ctx.schools.schools[k].lat,
-          lng: ctx.schools.schools[k].lng
+          lat: ctx.schools[k].lat,
+          lng: ctx.schools[k].lng
         }
       });
     });
 
     schoolArray.map(function (school) {
+
       var marker = new google.maps.Marker({
 
         position: school.latLng,
