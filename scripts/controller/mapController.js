@@ -62,6 +62,8 @@
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
         displayChart(marker.name1, marker.data1);
+        $('#chart-wrapper').slideToggle('slow');
+        $('#school-data h1').text(marker.name1);
       });
 
       var infoWindow = new google.maps.InfoWindow();

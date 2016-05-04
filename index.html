@@ -53,10 +53,14 @@
               <div id="locationField">
                 <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
               </div>
-              <button type="submit" id="submit" name="school">Search by address</button><br>                <div id="map-elements">
+              <button type="submit" id="submit" name="school">Search by address</button><br>
+              <div id="map-elements">
+                <div id="chart-wrapper">
+                  <article id="school-data"><h1>School Name</h1></article>
                   <canvas id="chart-canvas"></canvas>
+                </div>
                   <div id="map-canvas"></div>
-                  <div id="toggle">TOGGLE HERE</div>
+                  <!-- <div id="toggle">TOGGLE HERE</div> -->
                 </div>
             </section>
       </main>
