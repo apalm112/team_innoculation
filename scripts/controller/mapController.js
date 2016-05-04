@@ -36,25 +36,35 @@
     keys.map(function (k) {
       schoolArray.push({
         key: k,
-        school: ctx.schools[k].school_name,
         latLng: {
           lat: ctx.schools[k].lat,
           lng: ctx.schools[k].lng
-        }
+        },
+        school: ctx.schools[k].school_name,
+        percentPersonalExemption: ctx.schools[k].percent_with_personal_exemption,
+        percentReligiousExemption: ctx.schools[k].percent_with_religious_exemption,
+        percentMedicalExemption: ctx.schools[k].percent_with_medical_exemption,
+        percentTotalExemption: ctx.schools[k].percent_with_any_exemption,
+        percentCompletedImmunization: ctx.schools[k].percent_complete_for_all_immunizations,
+        totalEnrollment: ctx.schools[k].k_12_enrollment
       });
     });
 
     schoolArray.map(function (school) {
-
       var marker = new google.maps.Marker({
-
         position: school.latLng,
-        title: school.key,
+        content: '<h1>' + school.school + '</h1><p>Percent Personal Exemption: ' + school.percentPersonalExemption + '</p><p>Percent Religious Exemption: ' + school.percentReligiousExemption + '</p><p>Percent Medical Exemption: ' + school.percentMedicalExemption + '</p><p>Percent Total Exemption: ' + school.percentTotalExemption + '</p><p>Percent Completed Immunization: ' + school.percentCompletedImmunization + '</p><p>Total Enrollment: ' + school.totalEnrollment + '</p>'
+      });
+      // var contentString = '<h1>' + schoolArray + '</h1>';
+      marker.addListener('click', function(){
+        infoWindow.open(map, marker);
       });
 
+      var infoWindow = new google.maps.InfoWindow();
+        // content: contentString
+      infoWindow.setContent(marker.content);
       // To add the marker to the map, call setMap();
       marker.setMap(map);
-
     });
   };
 

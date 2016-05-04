@@ -1,34 +1,31 @@
 var schoolName = 'Rainier Beach';
-var firebaseData = [1, 5, 15, 1.7, 9, 2];
+var firebaseData = [1, 2, 1, 96];
 
 function displayChart(){
   var findChartDisplay = $('#chart-display');
   var ctx = $('#chart-canvas');
   var data = {
-    labels: ['Tetanus', 'Pertussis', 'MMR', 'Polio', 'Hep B', 'Varicella'],
+    labels: ['Percent Personal Exemption', 'Percent Religious Exemption', 'Percent Medical Exemption', 'Percent Completed Immunization'],
     datasets: [
       {
-        label: schoolName,
-        backgroundColor: 'rgba(255,99,132,0.2)',
-        borderColor: 'rgba(255,99,132,1)',
-        borderWidth: 1,
-        hoverBackgroundColor: 'rgba(255,99,132,0.4)',
-        hoverBorderColor: 'rgba(255,99,132,1)',
         data: firebaseData,
-      }
-    ]
+        backgroundColor: [
+          '#FF6384',
+          '#36A2EB',
+          '#FFCE56',
+          'blue',
+        ],
+        hoverBackgroundColor: [
+          '#36A2EB',
+          '#FF6384',
+          'blue',
+          '#FFCE56'
+        ]
+      }]
   };
-  var myBarChart = new Chart(ctx, {
-    type: 'bar',
+
+  var myPieChart = new Chart(ctx, {
+    type: 'pie',
     data: data,
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero:true
-          }
-        }]
-      }
-    }
   });
 };
