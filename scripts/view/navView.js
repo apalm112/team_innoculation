@@ -1,3 +1,3 @@
 $('.icon-menu').click(function(){
-  $('.nav-items').slideToggle('fast');
+  $('.menu').slideToggle('fast');
 });
