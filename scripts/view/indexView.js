@@ -40,7 +40,8 @@
         lat = autocomplete.getPlace().geometry.location.lat();
         lng = autocomplete.getPlace().geometry.location.lng();
 
-        page('/map/lat/' + lat + '/lng/' + lng);
+        window.location = '/map/lat/' + lat + '/lng/' + lng;
+        // page('/map/lat/' + lat + '/lng/' + lng);
       });
     };
 
