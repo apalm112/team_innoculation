@@ -36,7 +36,7 @@
     keys.map(function (k) {
       schoolArray.push({
         key: k,
-        school: ctx.schools.schools[k].school_name,
+        school: ctx.schools[k].school_name,
         latLng: {
           lat: ctx.schools[k].lat,
           lng: ctx.schools[k].lng
