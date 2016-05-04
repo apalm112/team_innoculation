@@ -37,6 +37,7 @@
     keys.map(function (k) {
       schoolArray.push({
         key: k,
+        school: ctx.schools.schools[k].school_name,
         latLng: {
           lat: ctx.schools.schools[k].lat,
           lng: ctx.schools.schools[k].lng
@@ -48,11 +49,12 @@
       var marker = new google.maps.Marker({
 
         position: school.latLng,
-        title: school.key
+        title: school.key,
       });
 
       // To add the marker to the map, call setMap();
       marker.setMap(map);
+
     });
   };
 
