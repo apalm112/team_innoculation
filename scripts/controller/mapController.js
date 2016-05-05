@@ -21,14 +21,10 @@
     ctx.latLng = latLng;
     ctx.zoom = zoom;
 
-
     $('.loading').show();
     $('#about-container').hide();
 
-
-      initMap(latLng, zoom);
-
-
+    initMap(latLng, zoom);
 
     next();
   };
@@ -85,6 +81,7 @@
         $('#chart-wrapper').slideToggle('slow');
         $('#school-data h1').text(marker.name1);
         $('#school-data').html(marker.content);
+        $('footer').hide();
       });
 
       marker.addListener('mouseover', function () {
