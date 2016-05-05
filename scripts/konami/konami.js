@@ -36,9 +36,4 @@ document.addEventListener('keydown', function(e) {
 
 function activateCheats() {
   document.body.style.backgroundImage = "url('img/needle-butt.png')";
-
-  var audio = new Audio('audio/pling.mp3');
-  audio.play();
-
-  // alert("cheats activated");
 }
