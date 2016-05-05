@@ -1,11 +1,19 @@
 #map-canvas {
-  max-width: 100%;
-  height: 420px;
-  display:fixed;
+  /*max-width: 100%;*/
+  /*height: 420px;*/
+  height: 100%;
+  width: 100%;
 }
 
 @media screen and (min-width: 640px){
   #map-canvas {
-    height: 500px;
+    /*height: 100%;
+    width: 100%;*/
   }
+}
+
+
+#map-elements {
+  height: 500px;
+  width: 100%;
 }
