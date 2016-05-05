@@ -70,11 +70,12 @@
         data1: [school.percentPersonalExemption, school.percentReligiousExemption, school.percentMedicalExemption, school.percentCompletedImmunization]
       });
       // var contentString = '<h1>' + schoolArray + '</h1>';
-      marker.addListener('click', function () {
-        infoWindow.open(map, marker);
+
+      marker.addListener('click', function(){
         displayChart(marker.name1, marker.data1);
         $('#chart-wrapper').slideToggle('slow');
         $('#school-data h1').text(marker.name1);
+        $('#school-data').html(marker.content);
       });
 
       var infoWindow = new google.maps.InfoWindow();
