@@ -14,6 +14,7 @@
      <link href="/styles/module/chart.css" type="text/css" rel="stylesheet">
      <link href="/styles/module/loading.css" type="text/css" rel="stylesheet">
      <link href="/styles/module/inputbox.css" type="text/css" rel="stylesheet">
+      <link href="/styles/module/alerts.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
@@ -50,6 +51,11 @@
          <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
        </div>
        <button type="submit" id="submit" name="school" class="round button">Explore my Area</button><br>
+       <div class="alert">
+
+  <a class="close warn" data-dismiss="alert"></a>
+  <strong>Warning:</strong> Please enter a Washington State address.
+</div>
        <div id="map-elements">
          <div id="chart-wrapper">
            <article id="school-data"><h1>School Name</h1><p>content</p></article>
