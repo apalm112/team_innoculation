@@ -22,6 +22,7 @@
 
     initMap(latLng, zoom);
     //need to add schools as a parameter
+    $('#about-container').hide();
     $('#home-container').hide();
     $('#map-container').show();
     $('#map-elements').show();
@@ -34,7 +35,7 @@
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
 
     //setting limit for testing
-    ref.child('schools').once('value', function (snapshot) {
+    ref.child('schools').limitToFirst(20).once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
     }, function (errorObject) {
@@ -79,6 +80,11 @@
         $('#school-data').html(marker.content);
       });
 
+      var infoWindow = new google.maps.InfoWindow();
+      // content: contentString
+      infoWindow.setContent(marker.content);
+
+      var someArray = marker.content;
       // To add the marker to the map, call setMap();
       marker.setMap(map);
     });
