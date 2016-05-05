@@ -1,54 +1,34 @@
-footer {
-position: fixed;
-background-color: #eee;
-display:block;
-width: 100%;
-height: 20px;
-bottom: 0;
-z-index: 1;
-text-align: center;
-border-top: 1px solid black;
-font-size: 12px;
+
+#home-container {
+  padding-top: 30%;
+
+}
+
+#about-container {
+display: none;
+
+}
+
+#map-container {
+  display: none;
 }
 
 #about-container h1{
   font-weight: bold;
 }
-.bio-photo{
-  margin: 0 auto;
+
+.mapwrapper {
+  position: relative;
 }
 
-.bio-photo img{
-  max-width: 100%;
-  border: 4px solid black;
-  margin: 5px;
-}
-
-.bio-photo a{
-  font-size: 30px;
-  margin: 5px;
-}
-
-.bio-blurb{
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-.bio-blurb li{
-  list-style-type: none;
-  text-align: left;
-  padding-left: 30px;
-}
-
-.clear-fix{
-  clear: both;
+.top-bar{
+  border-bottom: 1px solid black;
 }
 
 @media only screen and (min-width: 640px){
-  .bio-photo{
-    margin: 20px;
-    float: left;
+
+  #home-container {
+    padding-top: 20%;
   }
-  .bio-blurb{
-    margin-top: 60px;
-    text-align: left;
-  }
+
+}
