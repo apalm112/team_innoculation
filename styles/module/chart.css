@@ -1,23 +1,14 @@
 #chart-canvas {
-  /*display: none;*/
   background-color: white;
-  /*position: absolute;*/
-  width: 100%;
-  /*max-height: 420px;*/
 }
 
 #chart-wrapper {
   display: none;
-  width: 100%;
   position: relative;
   z-index: 1;
-  /*height: 90%;*/
   height: 420px;
 }
 
-/*@media screen and (min-width: 640px){
-  #chart-canvas {
-    width: 100%;
-    max-height: 500px;
-  }
-}*/
+@media screen and (min-width: 640px){
+
+}
