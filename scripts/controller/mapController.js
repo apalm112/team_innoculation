@@ -25,6 +25,7 @@
     $('#home-container').hide();
     $('#map-container').show();
     $('#map-elements').show();
+    $('.loading').hide();
     next();
   };
 
@@ -39,7 +40,6 @@
     }, function (errorObject) {
       console.log('The read failed: ' + errorObject.code);
     });
-
   };
 
   mapController.renderSchools = function (ctx, next) {
@@ -82,7 +82,6 @@
       // To add the marker to the map, call setMap();
       marker.setMap(map);
     });
-    $('.loading').hide();
   };
 
   module.mapController = mapController;
