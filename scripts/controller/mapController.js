@@ -8,7 +8,7 @@
         lat: 47.3232,
         lng: -120.3232
       };
-      var zoom = 3;
+      var zoom = 10;
     } else {
 
       var latLng = {
@@ -21,6 +21,7 @@
     initMap(latLng, zoom);
     $('.loading').show();
     $('#about-container').hide();
+
     next();
   };
 
