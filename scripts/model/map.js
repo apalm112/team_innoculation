@@ -1,6 +1,6 @@
-function initMap(latLng) {
-  
-  if(navigator.geolocation) {
+function initMap(latLng, zoom) {
+
+  if (navigator.geolocation) {
     function error(err) {
       console.warn('ERROR(' + err.code + '): ' + err.message);
     }
@@ -15,11 +15,8 @@ function initMap(latLng) {
   }
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
-    center:latLng,
-    //   lat: lat,
-    //   lng: lng
-
-    zoom: 15,
+    center: latLng,
+    zoom: zoom,
     panControlOptions: {
       position: google.maps.ControlPosition.BOTTOM_LEFT
     },
@@ -33,7 +30,7 @@ function initMap(latLng) {
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
-    title: 'Hello World!'
+    title: 'Your address',
   });
 };
 
