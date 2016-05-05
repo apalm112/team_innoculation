@@ -21,7 +21,7 @@ Victor Benavente
 -  As a user, on the about page I want to learn about all of the developers  
 
 ## Developer Stories  
--  As developers, we want to make an AJAX call for all WA state school vaccine data  
+-  As developers, we want to make a get call for all WA state school vaccine data  
 -  As developers, we want to save the data to Firebase  
 -  As developers, we want the search query to integrate with Google Maps autocomplete  
 -  As developers, we want to make sure input address is in WA state  
