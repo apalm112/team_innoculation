@@ -44,6 +44,7 @@
         $('.loading').show();
         // page('/map/lat/' + lat + '/lng/' + lng);
       });
+
     };
 
     $('#autocomplete').keypress(function(e){
