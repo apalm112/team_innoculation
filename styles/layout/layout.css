@@ -6,4 +6,40 @@ width: 100%;
 height: 20px;
 bottom: 0;
 z-index: 1;
+text-align: center;
 }
+
+.bio-photo{
+  margin: 0 auto;
+}
+
+.bio-photo img{
+  max-width: 100%;
+  border: 4px solid black;
+  margin: 5px;
+}
+
+.bio-photo a{
+  font-size: 30px;
+  margin: 5px;
+}
+
+.bio-blurb li{
+  list-style-type: none;
+  text-align: left;
+  margin: 15px;
+}
+
+.clear-fix{
+  clear: both;
+}
+
+@media only screen and (min-width: 640px){
+  .bio-photo{
+    margin: 20px;
+    float: left;
+  }
+  .bio-blurb{
+    margin-top: 60px;
+    text-align: left;
+  }
