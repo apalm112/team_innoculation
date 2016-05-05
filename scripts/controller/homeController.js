@@ -3,10 +3,10 @@
     index: function(ctx, next) {
       console.log('working');
       $('#map-elements').hide();
+      $('#about-container').hide();
       $('#map-container').show();
       $('#home-container').show();
       $('.loading').hide();
-
       next();
     }
   };
