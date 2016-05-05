@@ -41,6 +41,7 @@
         lng = autocomplete.getPlace().geometry.location.lng();
 
         window.location = '/map/lat/' + lat + '/lng/' + lng;
+        $('.loading').show();
         // page('/map/lat/' + lat + '/lng/' + lng);
       });
     };
