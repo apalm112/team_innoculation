@@ -26,6 +26,7 @@
     $('#home-container').hide();
     $('#map-container').show();
     $('#map-elements').show();
+    $('.loading').hide();
     next();
   };
 
@@ -87,6 +88,7 @@
       // To add the marker to the map, call setMap();
       marker.setMap(map);
     });
+    next();
   };
 
   module.mapController = mapController;

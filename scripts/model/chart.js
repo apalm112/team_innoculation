@@ -10,16 +10,16 @@ function displayChart(schoolName, firebaseData){
       {
         data: firebaseData,
         backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56',
-          'blue',
+          '#FF9A0E',
+          '#8B1DE8',
+          '#FF0000',
+          '#4510FF',
         ],
         hoverBackgroundColor: [
-          '#36A2EB',
-          '#FF6384',
-          'blue',
-          '#FFCE56'
+          '#FFBC67',
+          '#C956E8',
+          '#FF594E',
+          '#1496FF'
         ]
       }]
   };
