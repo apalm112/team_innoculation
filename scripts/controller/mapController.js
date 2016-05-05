@@ -33,12 +33,13 @@
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
 
     //setting limit for testing
-    ref.child('schools').limitToFirst(20).once('value', function (snapshot) {
+    ref.child('schools').once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
     }, function (errorObject) {
       console.log('The read failed: ' + errorObject.code);
     });
+
   };
 
   mapController.renderSchools = function (ctx, next) {
