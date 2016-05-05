@@ -80,7 +80,6 @@
       });
 
       var infoWindow = new google.maps.InfoWindow();
-      // content: contentString
       infoWindow.setContent(marker.content);
 
       var someArray = marker.content;

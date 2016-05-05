@@ -26,13 +26,11 @@ function initMap(latLng, zoom) {
     disableDoubleClickZoom: false
   });
 
-console.log(latLng);
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
     title: 'Your address',
     icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
-    //animation: google.maps.Animation.BOUNCE,
   });
 };
 
