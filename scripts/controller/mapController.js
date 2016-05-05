@@ -8,19 +8,27 @@
         lat: 47.3232,
         lng: -120.3232
       };
-      var zoom = 10;
+      var zoom = 6;
     } else {
 
       var latLng = {
         lat: parseFloat(ctx.params.lat),
         lng: parseFloat(ctx.params.lng)
       };
-      zoom = 15;
+      var zoom = 15;
     }
 
-    initMap(latLng, zoom);
+    ctx.latLng = latLng;
+    ctx.zoom = zoom;
+
+
     $('.loading').show();
     $('#about-container').hide();
+
+
+      initMap(latLng, zoom);
+
+
 
     next();
   };
@@ -55,9 +63,10 @@
       $('#home-container').hide();
       $('#map-container').show();
       $('.loading').hide();
+
     });
 
-    var filteredSchoolArray = schoolArray.filter(function(k) {
+    var filteredSchoolArray = schoolArray.filter(function (k) {
       return (-123 < k.latLng.lng) && (-117 > k.latLng.lng) && (45 < k.latLng.lat) && (49 > k.latLng.lat);
     });
 
@@ -83,6 +92,9 @@
       var someArray = marker.content;
       // To add the marker to the map, call setMap();
       marker.setMap(map);
+      google.maps.event.trigger(map, 'resize');
+      map.setCenter(ctx.latLng);
+      map.setZoom(ctx.zoom);
     });
     next();
   };
