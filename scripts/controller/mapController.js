@@ -31,8 +31,6 @@
     ref.child('schools').once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
-    }, function (errorObject) {
-      console.log('The read failed: ' + errorObject.code);
     });
   };
 
@@ -84,7 +82,6 @@
 
       var someArray = marker.content;
       // To add the marker to the map, call setMap();
-
       marker.setMap(map);
     });
     next();
