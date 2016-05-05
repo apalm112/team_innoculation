@@ -19,6 +19,11 @@
 
 #home-container {
   padding-top: 30%;
+
+}
+
+#map-container {
+  display: none;
 }
 
 

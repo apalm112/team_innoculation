@@ -2,8 +2,8 @@
   var homeController = {
     index: function(ctx, next) {
       console.log('working');
-      $('#map-elements').hide();
-      $('#map-container').show();
+      // $('#map-elements').hide();
+      $('#map-container').hide();
       $('#home-container').show();
       $('.loading').hide();
 
