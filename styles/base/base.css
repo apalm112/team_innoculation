@@ -20,6 +20,16 @@
 
 #home-container {
   padding-top: 30%;
+
+}
+
+#about-container {
+display: none;
+
+}
+
+#map-container {
+  display: none;
 }
 
 

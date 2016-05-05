@@ -3,8 +3,6 @@
 
   mapController.index = function (ctx, next) {
 
-    var schoolId, allLatLng, allMarkers, schoolName = [];
-
     if (!ctx.params.lat) {
       var latLng = {
         lat: 47.3232,
@@ -21,21 +19,15 @@
     }
 
     initMap(latLng, zoom);
-    //need to add schools as a parameter
+    $('.loading').show();
     $('#about-container').hide();
-    $('#home-container').hide();
-    $('#map-container').show();
-    $('#map-elements').show();
-    $('.loading').hide();
     next();
   };
 
   mapController.findSchools = function (ctx, next) {
-
+    $('.loading').show();
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
-
-    //setting limit for testing
-    ref.child('schools').limitToFirst(20).once('value', function (snapshot) {
+    ref.child('schools').once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
     }, function (errorObject) {
@@ -61,6 +53,9 @@
         percentCompletedImmunization: Math.ceil(ctx.schools[k].percent_complete_for_all_immunizations * 100),
         totalEnrollment: ctx.schools[k].k_12_enrollment
       });
+      $('#home-container').hide();
+      $('#map-container').show();
+      $('.loading').hide();
     });
 
     var filteredSchoolArray = schoolArray.filter(function(k) {
@@ -75,9 +70,8 @@
         name1: school.school,
         data1: [school.percentPersonalExemption, school.percentReligiousExemption, school.percentMedicalExemption, school.percentCompletedImmunization]
       });
-      // var contentString = '<h1>' + schoolArray + '</h1>';
 
-      marker.addListener('click', function(){
+      marker.addListener('click', function () {
         displayChart(marker.name1, marker.data1);
         $('#chart-wrapper').slideToggle('slow');
         $('#school-data h1').text(marker.name1);
@@ -90,6 +84,7 @@
 
       var someArray = marker.content;
       // To add the marker to the map, call setMap();
+
       marker.setMap(map);
     });
     next();

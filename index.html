@@ -37,17 +37,20 @@
 </div> -->
    <div class="row column text-center">
      <section id="home-container">
-           <h1>Inoculate Washington Schools</h1>
-           <!-- <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name"> -->
-           <article>
-                 <p>Discover vaccine excemption and completion rates for K-12 schools in Washington state.</p><p>Type in an address to explore the data in schools near you!</p>
-           </article>
+           <h1>Map Immunizations in Washington</h1>
+                 <h4>Explore immunization data for schools in the state of Washington </h4>
+           <div id="locationField">
+             <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
+           </div>
+           <button type="submit" id="submit" name="school" class="round button">Explore my Area</button><br>
      </section>
      <section id="map-container">
-       <div id="locationField">
-         <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
+
+       <div id="locationField-map">
+         <input id="autocomplete-map" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
        </div>
-       <button type="submit" id="submit" name="school" class="round button">Explore my Area</button><br>
+       <button type="submit" id="submit-map" name="school" class="round button">Explore my Area</button><br>
+
        <div id="map-elements">
          <div id="chart-wrapper">
            <article id="school-data"><h1>School Name</h1><p>content</p></article>
