@@ -17,7 +17,7 @@
         lat: parseFloat(ctx.params.lat),
         lng: parseFloat(ctx.params.lng)
       };
-      zoom = 12;
+      zoom = 15;
     }
 
     initMap(latLng, zoom);
@@ -60,10 +60,6 @@
         percentCompletedImmunization: Math.ceil(ctx.schools[k].percent_complete_for_all_immunizations * 100),
         totalEnrollment: ctx.schools[k].k_12_enrollment
       });
-      if ((45 < ctx.schools[k].lat < 49) && (-123 < ctx.schools[k].lng < -117)) {
-        ctx.schools[k].lat = 0;
-        ctx.schools[k].lng = 0;
-      }
     });
 
     var filteredSchoolArray = schoolArray.filter(function(k) {
