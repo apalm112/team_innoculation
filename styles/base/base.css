@@ -2,7 +2,9 @@
   position: relative;
 }
 
-
+.top-bar{
+  border-bottom: 1px solid black;
+}
 .overlay {
   height: 90%;
   padding-top: 10px;
@@ -14,11 +16,15 @@
   background: grey;
   z-index: 1;
   opacity: .8
-
 }
 
 #home-container {
   padding-top: 30%;
+
+}
+
+#about-container {
+display: none;
 
 }
 
