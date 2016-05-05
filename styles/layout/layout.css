@@ -9,6 +9,9 @@ z-index: 1;
 text-align: center;
 }
 
+#about-container h1{
+  font-weight: bold;
+}
 .bio-photo{
   margin: 0 auto;
 }
@@ -24,10 +27,14 @@ text-align: center;
   margin: 5px;
 }
 
+.bio-blurb{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
 .bio-blurb li{
   list-style-type: none;
   text-align: left;
-  margin: 15px;
+  padding-left: 30px;
 }
 
 .clear-fix{
