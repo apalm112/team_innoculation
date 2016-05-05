@@ -5,6 +5,8 @@
       $('#map-elements').hide();
       $('#map-container').show();
       $('#home-container').show();
+      $('.loading').hide();
+
       next();
     }
   };
