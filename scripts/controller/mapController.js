@@ -36,7 +36,7 @@
   mapController.findSchools = function (ctx, next) {
     $('.loading').show();
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
-    ref.child('schools').once('value', function (snapshot) {
+    ref.child('schools').limitToLast(40).once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
     });

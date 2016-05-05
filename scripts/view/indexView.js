@@ -35,7 +35,7 @@
         });
       };
 
-      $('button').on('click', function() {
+      $('#submit-index').on('click', function() {
         lat = autocomplete.getPlace().geometry.location.lat();
         lng = autocomplete.getPlace().geometry.location.lng();
 

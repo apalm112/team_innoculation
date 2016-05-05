@@ -7,7 +7,7 @@
   mapView.initAutocomplete = function(ctx, next) {
         // Create the autocomplete object, restricting the search to geographical
         // location types.
-    autocomplete = new google.maps.places.Autocomplete(
+    autocompletemap = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */
             (document.getElementById('autocomplete-map')), {
               types: ['geocode']
@@ -35,19 +35,32 @@
       });
     };
 
-    $('button-map').on('click', function() {
-      lat = autocomplete.getPlace().geometry.location.lat();
-      lng = autocomplete.getPlace().geometry.location.lng();
-
-      window.location = '/map/lat/' + lat + '/lng/' + lng;
-      $('.loading').show();
+    $('#submit-map').on('click', function() {
+      lat = autocompletemap.getPlace().geometry.location.lat();
+      lng = autocompletemap.getPlace().geometry.location.lng();
+      google.maps.event.trigger(map, 'resize');
+      latLng = {
+        lat:lat,
+        lng: lng
+      }
+      console.log(latLng);
+      map.setCenter(latLng);
+      map.setZoom(16);
+      var marker = new google.maps.Marker({
+        position: latLng,
+        map: map,
+        title: 'Your search address',
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+      });
+      marker.setMap(map);
+      history.pushState('', '', '/map/lat/' + lat + '/lng/' + lng);
     });
   };
 
   $('#autocomplete-map').keypress(function(e){
     if (e.which === 13) {
-      lat = autocomplete.getPlace().geometry.location.lat();
-      lng = autocomplete.getPlace().geometry.location.lng();
+      lat = autocompletemap.getPlace().geometry.location.lat();
+      lng = autocompletemap.getPlace().geometry.location.lng();
       window.location = '/map/lat/' + lat + '/lng/' + lng;
     }
   });
