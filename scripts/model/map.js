@@ -1,5 +1,4 @@
 function initMap(latLng, zoom) {
-
   if (navigator.geolocation) {
     function error(err) {
       console.warn('ERROR(' + err.code + '): ' + err.message);
@@ -27,23 +26,15 @@ function initMap(latLng, zoom) {
     disableDoubleClickZoom: false
   });
 
+console.log(latLng);
   var marker = new google.maps.Marker({
     position: latLng,
     map: map,
     title: 'Your address',
-    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-    animation: google.maps.Animation.BOUNCE,
+    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    //animation: google.maps.Animation.BOUNCE,
   });
-  marker.addListener('click', toggleBounce);
 };
-// sets conitinual bounce on user address marker
-function toggleBounce() {
-  if (marker.getAnimation() !== null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
-}
 
 function hideMap() {
   $('#map-container').hide();
