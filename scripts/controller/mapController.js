@@ -5,13 +5,22 @@
 
     var schoolId, allLatLng, allMarkers, schoolName = [];
 
-    var latLng = {
-      lat: parseFloat(ctx.params.lat),
-      lng: parseFloat(ctx.params.lng)
-    };
+    if (!ctx.params.lat) {
+      var latLng = {
+        lat: 47.3232,
+        lng: -120.3232
+      };
+      var zoom = 7;
+    } else {
 
-    initMap();
-    initMap(latLng);
+      var latLng = {
+        lat: parseFloat(ctx.params.lat),
+        lng: parseFloat(ctx.params.lng)
+      };
+      zoom = 12;
+    }
+
+    initMap(latLng, zoom);
     //need to add schools as a parameter
     $('#home-container').hide();
     $('#map-container').show();
@@ -23,7 +32,7 @@
 
     var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
 
-     //setting limit for testing
+    //setting limit for testing
     ref.child('schools').limitToFirst(20).once('value', function (snapshot) {
       ctx.schools = snapshot.val();
       next();
@@ -61,8 +70,8 @@
         data1: [school.percentPersonalExemption, school.percentReligiousExemption, school.percentMedicalExemption, school.percentCompletedImmunization]
       });
       // var contentString = '<h1>' + schoolArray + '</h1>';
+
       marker.addListener('click', function(){
-        // infoWindow.open(map, marker);
         displayChart(marker.name1, marker.data1);
         $('#chart-wrapper').slideToggle('slow');
         $('#school-data h1').text(marker.name1);
@@ -70,7 +79,7 @@
       });
 
       var infoWindow = new google.maps.InfoWindow();
-        // content: contentString
+      // content: contentString
       infoWindow.setContent(marker.content);
 
       var someArray = marker.content;
