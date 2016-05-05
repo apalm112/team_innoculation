@@ -36,13 +36,11 @@
     };
 
     $('button-map').on('click', function() {
-    //  console.log(autocomplete.getPlace());
       lat = autocomplete.getPlace().geometry.location.lat();
       lng = autocomplete.getPlace().geometry.location.lng();
 
       window.location = '/map/lat/' + lat + '/lng/' + lng;
       $('.loading').show();
-      // page('/map/lat/' + lat + '/lng/' + lng);
     });
   };
 

@@ -57,27 +57,19 @@ var checkFireDBforData = function () {
 };
 
 var updateLatLngInDataBase = function () {
-  //  console.log('do stuff here like update database');
   fireDataBase.child('schools').once('value', function (snapshot) {
-    // The callback function will get called twice, once for "fred" and once for "barney"
     counter = 0;
     stop = 80;
     snapshot.forEach(function (childSnapshot) {
-      // key will be "fred" the first time and "barney" the second time
       var key = childSnapshot.key();
-      // childData will be the actual contents of the child
       var childData = childSnapshot.val();
-      //  console.log(childData.hasOwnProperty('lat'));
-
       if (childData.hasOwnProperty('lat') === false) {
-        //call google and get address then save back to firedb
         counter = counter + 1;
         if (counter < stop) {
           console.log('Calling Google api for lat lng of: ' + childData.address + childData.city);
           getLocationFromAddressandSaveToDB(childData.address, childData.city, 'WA', key);
         }
       } else {
-        //console.log('Skipping :' + childData.address);
       };
     });
   });
@@ -96,8 +88,8 @@ var getLocationFromAddressandSaveToDB = function (address, city, state, key) {
     });
     res.on('end', function () {
       var googleApiData = JSON.parse(body);
-      console.log("LOG :", googleApiData.status);
-      if (googleApiData.status === "OK") {
+      console.log('LOG :', googleApiData.status);
+      if (googleApiData.status === 'OK') {
         fireDataBase.child('schools').child(key).update({
           lat: googleApiData.results[0].geometry.location.lat,
           lng: googleApiData.results[0].geometry.location.lng
@@ -105,7 +97,6 @@ var getLocationFromAddressandSaveToDB = function (address, city, state, key) {
 
         console.log('Finished call:' + googleApiData.results[0].geometry.location.lat + googleApiData.results[0].geometry.location.lng);
       }
-      //console.log(fireDataBase.child('schools').child(key));
     }).on('error', function (e) {
       console.log('Got an error: ');
     });
