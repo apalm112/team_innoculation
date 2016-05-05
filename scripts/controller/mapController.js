@@ -63,6 +63,7 @@
 
     filteredSchoolArray.map(function (school) {
       var marker = new google.maps.Marker({
+        map: map,
         position: school.latLng,
         content: '<h1>' + school.school + '</h1><p>Personal Exemption: ' + school.percentPersonalExemption + '%</p><p>Religious Exemption: ' + school.percentReligiousExemption + '%</p><p>Medical Exemption: ' + school.percentMedicalExemption + '%</p><p>Total Exemption: ' + school.percentTotalExemption + '%</p><p>Completed Immunization: ' + school.percentCompletedImmunization + '%</p><p>Total Enrollment: ' + school.totalEnrollment + '</p>',
         key: school.key,
@@ -77,8 +78,16 @@
         $('#school-data').html(marker.content);
       });
 
+      marker.addListener('mouseover', function () {
+        infoWindow.open(map,marker);
+      });
+
+      marker.addListener('mouseout', function () {
+        infoWindow.close(map,marker);
+      });
+
       var infoWindow = new google.maps.InfoWindow();
-      infoWindow.setContent(marker.content);
+      infoWindow.setContent(marker.name1);
 
       var someArray = marker.content;
       // To add the marker to the map, call setMap();
