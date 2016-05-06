@@ -35,22 +35,24 @@
         });
       };
 
-      $('button').on('click', function() {
-      //  console.log(autocomplete.getPlace());
+      $('#submit-index').on('click', function() {
         lat = autocomplete.getPlace().geometry.location.lat();
         lng = autocomplete.getPlace().geometry.location.lng();
 
         window.location = '/map/lat/' + lat + '/lng/' + lng;
         $('.loading').show();
-        // page('/map/lat/' + lat + '/lng/' + lng);
       });
+
     };
 
     $('#autocomplete').keypress(function(e){
+      console.log('pressed');
       if (e.which === 13) {
-        lat = autocomplete.getPlace().geometry.location.lat();
-        lng = autocomplete.getPlace().geometry.location.lng();
-        window.location = '/map/lat/' + lat + '/lng/' + lng;
+
+        // brian signs off on this - no point deducted
+        setTimeout(function() {
+          $('#submit-index').click();
+        }, 500);
       }
     });
 

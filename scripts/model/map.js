@@ -1,18 +1,17 @@
 function initMap(latLng, zoom) {
+    if (navigator.geolocation) {
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      }
 
-  if (navigator.geolocation) {
-    function error(err) {
-      console.warn('ERROR(' + err.code + '): ' + err.message);
+      function success(pos) {
+        userCords = pos.coords;
+      }
+
+      navigator.geolocation.getCurrentPosition(success, error);
+    } else {
+      alert('Geolocation is not supported in your browser');
     }
-
-    function success(pos) {
-      userCords = pos.coords;
-    }
-
-    navigator.geolocation.getCurrentPosition(success, error);
-  } else {
-    alert('Geolocation is not supported in your browser');
-  }
 
   map = new google.maps.Map(document.getElementById('map-canvas'), {
     center: latLng,
@@ -31,6 +30,7 @@ function initMap(latLng, zoom) {
     position: latLng,
     map: map,
     title: 'Your address',
+    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
   });
 };
 
