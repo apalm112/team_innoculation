@@ -4,7 +4,7 @@
 <head>
      <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>Foundation | Welcome</title>
+     <title>Project Inoculation</title>
      <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css">
      <link href="/vendors/iconstyle.css" type="text/css" rel="stylesheet">
      <link href="/styles/base/base.css" type="text/css" rel="stylesheet">
@@ -13,71 +13,123 @@
      <link href="/styles/module/nav.css" type="text/css" rel="stylesheet">
      <link href="/styles/module/chart.css" type="text/css" rel="stylesheet">
      <link href="/styles/module/loading.css" type="text/css" rel="stylesheet">
+     <link href="/styles/module/inputbox.css" type="text/css" rel="stylesheet">
+     <link href="/styles/module/bio.css" type="text/css" rel="stylesheet">
 </head>
 
 <body>
-  <div class="loading">Loading&#8230;
-  </div>
-     <div class="top-bar">
-           <div class="top-bar-left">
-             <div class="icon-menu"></div>
-                 <ul class="menu">
-                       <li class="tab"><a href="/" class="icon-home3">Home</a></li>
-                       <li class="tab"><a href="/map" class="icon-location">Map</a></li>
-                       <li class="tab"><a href="/about" class="icon-users">About</a></li>
-                 </ul>
-           </div>
-     </div>
-
-     <!-- <div class="callout large primary">
-<div class="row column text-center">
-<h1>Our Blog</h1>
-<h2 class="subheader">Such a Simple Blog Layout</h2>
-</div>
-</div> -->
-   <div class="row column text-center">
-     <section id="home-container">
-           <h1>Innoculation WA State Schoolz</h1>
-           <!-- <input id="auto-pop" type="text" name="school" placeholder="Enter Address/School Name"> -->
-           <article>
-                 <p>Ipsum yo Big Jim's Lumber and Pizza Palace is the shiznit we are just creating the longest filler run-on we can so there is content to read. No one will read this anyway hahahahahahahahah!</p>
-           </article>
-     </section>
-
-     <section id="map-container">
-       <div id="locationField">
-         <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
+  <div class="main-content">
+    <div class="loading">Loading&#8230;
+    </div>
+       <div class="top-bar">
+             <div class="top-bar-left">
+               <div class="icon-menu"></div>
+                   <ul class="menu">
+                         <li class="tab"><a href="/" class="icon-home3">Home</a></li>
+                         <li class="tab"><a href="/map" class="icon-location">Map</a></li>
+                         <li class="tab"><a href="/about" class="icon-users">About</a></li>
+                   </ul>
+             </div>
        </div>
-       <button type="submit" id="submit" name="school" class="round button">Search by address</button><br>
-       <div id="map-elements">
-         <div id="chart-wrapper">
-           <article id="school-data"><h1>School Name</h1><p>content</p></article>
-           <canvas id="chart-canvas"></canvas>
-         </div>
-           <div id="map-canvas"></div>
-         </div>
-     </section>
+     <div class="row column text-center">
+       <section id="home-container">
+         <h1>Inoculate Washington Schools</h1>
+         <article>
+               <p>Discover vaccine excemption and completion rates for K-12 schools in Washington state.</p><p>Type in an address to explore the data in schools near you!</p>
+         </article>
+             <div id="locationField">
+               <input id="autocomplete" placeholder="Enter your address" onFocus="indexView.geolocate()" type="text"></input>
+             </div>
+             <button type="submit" id="submit-index" name="school" class="round button">Explore my Area</button><br>
+       </section>
+       <section id="map-container">
 
+         <div id="locationField-map">
+           <input id="autocomplete-map" placeholder="Enter your address" onFocus="mapView.geolocate()" type="text"></input>
+         </div>
+         <button type="submit" id="submit-map" name="school" class="round button">Explore my Area</button><br>
 
+         <div id="map-elements">
+           <div id="chart-wrapper">
+             <article id="school-data"><h1>School Name</h1><p>content</p></article>
+             <canvas id="chart-canvas"></canvas>
+           </div>
+             <div id="map-canvas"></div>
+           </div>
+       </section>
+       <section id="about-container">
+         <h1>About the Developers</h1>
+         <h2>Adam Palmer</h2>
+         <div class="bio-photo">
+           <img src="/img/adam.png" alt="Adam Palmer Photo"><br>
+           <a href="https://github.com/apalm112" class="icon-github" alt="adam github" target="_blank"></a><a href="https://www.linkedin.com/in/adapalmer" class="icon-linkedin" target="_blank" alt="adam linkedin"></a>
+         </div>
+         <ul class="bio-blurb">
+           <li><strong>Developer in Training</strong></li>
+           <li><strong>Background:</strong> Brewing</li>
+           <li><strong>Hobbies:</strong> Learning how to code, reading code, googling code</li>
+         </ul>
+         <div class="clearfix"></div>
+         <h2>Aliza Pilisuk</h2>
+         <div class="bio-photo">
+           <img src="/img/aliza.png" alt="Aliza Pilisuk Photo"><br>
+           <a href="https://github.com/aliza89p" class="icon-github" target="_blank" alt="aliza github"></a><a href="https://www.linkedin.com/in/alizapilisuk" class="icon-linkedin" target="_blank" alt="aliza linkedin"></a>
+         </div>
+         <ul class="bio-blurb">
+           <li><strong>Developer for Positive Social Change</strong></li>
+           <li><strong>Background:</strong> Nonprofits focused in youth development, public health, and education</li>
+           <li><strong>Hobbies:</strong> Playing piano, sharing meals with friends and family, and hacking the planet</li>
+         </ul>
+         <div class="clearfix"></div>
+         <h2>Dustin McBride</h2>
+         <div class="bio-photo">
+           <img src="/img/dustin.png" alt="Dustin McBride Photo"><br>
+           <a href="https://github.com/dmcfly85" class="icon-github" target="_blank" alt="dustin github"></a><a href="https://www.linkedin.com/in/dustinbm" class="icon-linkedin" target="_blank" alt="dustin linkedin"></a>
+         </div>
+         <ul class="bio-blurb">
+           <li><strong>Web Developer</strong></li>
+           <li><strong>Background:</strong>Product Oriented</li>
+           <li><strong>Hobbies:</strong>IoT</li>
+         </ul>
+         <div class="clearfix"></div>
+         <h2>Drew Ferris</h2>
+         <div class="bio-photo">
+           <img src="/img/drew.JPG" alt="Drew Ferris Photo"><br>
+           <a href="https://github.com/drewferris" class="icon-github" target="_blank" alt="drew github"></a><a href="https://www.linkedin.com/in/drew-ferris-9b320521" class="icon-linkedin" target="_blank" alt="drew linkedin"></a>
+         </div>
+         <ul class="bio-blurb">
+           <li><strong>Developer from Seattle</strong></li>
+           <li><strong>Background:</strong> Mathematics and Russian Language</li>
+           <li><strong>Hobbies:</strong> playing and watching soccer, skiing, playing cards, and exploring Russian culture and literature</li>
+         </ul>
+         <div class="clearfix"></div>
+         <h2>Victor Benavente</h2>
+         <div class="bio-photo">
+           <img src="/img/victor.png" alt="Victor Benavente Photo"><br>
+           <a href="https://github.com/vbenavente" class="icon-github" target="_blank" alt="victor github"></a><a href="https://www.linkedin.com/in/vbenavente" class="icon-linkedin" target="_blank" alt="victor linkedin"></a>
+         </div>
+         <ul class="bio-blurb">
+           <li><strong>Developer for Hire</strong><li>
+           <li><strong>Background:</strong> Operations management, military tactics, techniques and procedures and intelligence collection and analysis<li>
+           <li><strong>Hobbies:</strong> Playing Basketball, Reading, and watching movies<li>
+         </ul>
+         <div class="clearfix"></div>
+       </section>
+       </div>
      </div>
-
      <footer>
-           &copy; 2016 Team Inoculation | Inoculate The Planet Sponsored by The Umbrella Corp.
+       &copy; 2016 Team Inoculation | Inoculate Washington Schools
      </footer>
-
-
-
-
      <script src="/vendors/scripts/jquery-2.2.0.js"></script>
      <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-
      <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-
      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwK1ew7HgCEIWD1yzatE9rNwAg3sUY7YQ&libraries=visualization,places">
      </script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.min.js"></script>
      <script src="/vendors/scripts/page.js"></script>
+     <script src="/scripts/konami/konami.js"></script>
+
 
       <script src="/scripts/controller/homeController.js"></script>
       <script src="/scripts/controller/mapController.js"></script>
