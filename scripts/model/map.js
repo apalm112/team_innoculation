@@ -30,7 +30,7 @@ function initMap(latLng, zoom) {
     position: latLng,
     map: map,
     title: 'Your address',
-    icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+    icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
   });
 };
 
