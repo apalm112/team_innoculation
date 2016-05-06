@@ -39,7 +39,7 @@
         position: latLng,
         map: map,
         title: 'Your search address',
-        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png'
+        icon: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
       });
       marker.setMap(map);
       history.pushState('', '', '/map/lat/' + lat + '/lng/' + lng);
