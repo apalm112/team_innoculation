@@ -5,8 +5,6 @@
     var placeSearch, autocomplete;
 
     indexView.initAutocomplete = function(ctx, next) {
-          // Create the autocomplete object, restricting the search to geographical
-          // location types.
       autocomplete = new google.maps.places.Autocomplete(
               /** @type {!HTMLInputElement} */
               (document.getElementById('autocomplete')), {
@@ -14,12 +12,6 @@
               });
       next();
     };
-          // When the user selects an address from the dropdown, populate the address
-          // fields in the form.
-          // autocomplete.addListener('place_changed', fillInAddress);    }
-
-      // Bias the autocomplete object to the user's geographical location,
-      // as supplied by the browser's 'navigator.geolocation' object.
     indexView.geolocate = function() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -42,11 +34,9 @@
         window.location = '/map/lat/' + lat + '/lng/' + lng;
         $('.loading').show();
       });
-
     };
 
     $('#autocomplete').keypress(function(e){
-      console.log('pressed');
       if (e.which === 13) {
 
         // brian signs off on this - no point deducted
