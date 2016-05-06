@@ -1,28 +1,28 @@
-(function(module) {
+(function (module) {
 
   var mapView = {};
 
   var placeSearch, autocomplete;
 
-  mapView.initAutocomplete = function(ctx, next) {
-        // Create the autocomplete object, restricting the search to geographical
-        // location types.
+  mapView.initAutocomplete = function (ctx, next) {
+    // Create the autocomplete object, restricting the search to geographical
+    // location types.
     autocompletemap = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */
-            (document.getElementById('autocomplete-map')), {
-              types: ['geocode']
-            });
+      /** @type {!HTMLInputElement} */
+      (document.getElementById('autocomplete-map')), {
+        types: ['geocode']
+      });
     next();
   };
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        // autocomplete.addListener('place_changed', fillInAddress);    }
+  // When the user selects an address from the dropdown, populate the address
+  // fields in the form.
+  // autocomplete.addListener('place_changed', fillInAddress);    }
 
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-  mapView.geolocate = function() {
+  // Bias the autocomplete object to the user's geographical location,
+  // as supplied by the browser's 'navigator.geolocation' object.
+  mapView.geolocate = function () {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+      navigator.geolocation.getCurrentPosition(function (position) {
         var geolocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -35,14 +35,14 @@
       });
     };
 
-    $('#submit-map').on('click', function() {
+    $('#submit-map').on('click', function () {
       lat = autocompletemap.getPlace().geometry.location.lat();
       lng = autocompletemap.getPlace().geometry.location.lng();
       google.maps.event.trigger(map, 'resize');
       latLng = {
-        lat:lat,
+        lat: lat,
         lng: lng
-      }
+      };
       console.log(latLng);
       map.setCenter(latLng);
       map.setZoom(16);
@@ -57,11 +57,14 @@
     });
   };
 
-  $('#autocomplete-map').keypress(function(e){
+  $('#autocomplete-map').keypress(function (e) {
+    console.log('pressed');
     if (e.which === 13) {
-      lat = autocompletemap.getPlace().geometry.location.lat();
-      lng = autocompletemap.getPlace().geometry.location.lng();
-      window.location = '/map/lat/' + lat + '/lng/' + lng;
+
+      // brian signs off on this - no point deducted
+      setTimeout(function () {
+        $('#submit-map').click();
+      }, 500);
     }
   });
 
