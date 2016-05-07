@@ -4,7 +4,7 @@
     this.latLng = {
       lat: opts['lat'],
       lng: opts['lng']
-    }
+    };
     Object.keys(opts).forEach(function (e, index, keys) {
       this[e] = opts[e];
     }, this);
