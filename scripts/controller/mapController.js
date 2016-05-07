@@ -33,10 +33,9 @@
   };
 
   mapController.renderSchools = function (ctx, next) {
-      $('#home-container').hide();
-      $('#map-container').show();
-      $('.loading').hide();
-
+    $('#home-container').hide();
+    $('#map-container').show();
+    $('.loading').hide();
 
     var filteredSchoolArray = School.all.filter(function (k) {
       return (-123 < k.latLng.lng) && (-117 > k.latLng.lng) && (45 < k.latLng.lat) && (49 > k.latLng.lat);
@@ -47,28 +46,35 @@
         map: map,
         position: school.latLng,
         key: school.key,
-        content: '<h1>' + school.school_name + '</h1><p>Personal Exemption: ' + Math.ceil(school.percent_with_personal_exemption * 100)+ '%</p><p>Religious Exemption: ' +   Math.ceil(school.percent_with_religious_exemption * 100) + '%</p><p>Medical Exemption: ' + Math.ceil(school.percent_with_medical_exemption * 100) + '%</p><p>Total Exemption: ' + Math.ceil(school.percent_with_any_exemption * 100) + '%</p><p>Completed Immunization:' + Math.ceil(school.percent_complete_for_all_immunizations * 100) + '%</p><p>Total Enrollment: ' + school.k_12_enrollment+ '</p>',
+        // content: '<h1>' + school.school_name + '</h1><p>Personal Exemption: ' + Math.ceil(school.percent_with_personal_exemption * 100)+ '%</p><p>Religious Exemption: ' +   Math.ceil(school.percent_with_religious_exemption * 100) + '%</p><p>Medical Exemption: ' + Math.ceil(school.percent_with_medical_exemption * 100) + '%</p><p>Total Exemption: ' + Math.ceil(school.percent_with_any_exemption * 100) + '%</p><p>Completed Immunization:' + Math.ceil(school.percent_complete_for_all_immunizations * 100) + '%</p><p>Total Enrollment: ' + school.k_12_enrollment+ '</p>',
         name1: school.school_name,
-        data1: [Math.ceil(school.percent_with_personal_exemption * 100),
-          Math.ceil(school.percent_with_religious_exemption * 100),
-          Math.ceil(school.percent_with_medical_exemption * 100),
-          Math.ceil(school.percent_complete_for_all_immunizations * 100)]
+
       });
 
       marker.addListener('click', function () {
-        displayChart(marker.name1, marker.data1);
+        School.getShoolData(marker.key, mapController.renderSchoolChart)
         $('#chart-wrapper').fadeIn('slow');
-         $('#school-data h1').text(marker.name1);
-         $('#school-data').html(marker.content);
+
         $('footer').hide();
       });
 
+      mapController.renderSchoolChart = function (school) {
+        data = [Math.ceil(school.percent_with_personal_exemption * 100),
+          Math.ceil(school.percent_with_religious_exemption * 100),
+          Math.ceil(school.percent_with_medical_exemption * 100),
+          Math.ceil(school.percent_complete_for_all_immunizations * 100)]
+        content =  '<h1>' + school.school_name + '</h1><p>Personal Exemption: ' + Math.ceil(school.percent_with_personal_exemption * 100)+ '%</p><p>Religious Exemption: ' +   Math.ceil(school.percent_with_religious_exemption * 100) + '%</p><p>Medical Exemption: ' + Math.ceil(school.percent_with_medical_exemption * 100) + '%</p><p>Total Exemption: ' + Math.ceil(school.percent_with_any_exemption * 100) + '%</p><p>Completed Immunization:' + Math.ceil(school.percent_complete_for_all_immunizations * 100) + '%</p><p>Total Enrollment: ' + school.k_12_enrollment+ '</p>',
+        displayChart(school.school_name, data);
+        $('#school-data h1').text(school.school_name);
+        $('#school-data').html(content);
+      }
+
       marker.addListener('mouseover', function () {
-        infoWindow.open(map,marker);
+        infoWindow.open(map, marker);
       });
 
       marker.addListener('mouseout', function () {
-        infoWindow.close(map,marker);
+        infoWindow.close(map, marker);
       });
 
       var infoWindow = new google.maps.InfoWindow();
