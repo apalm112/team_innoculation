@@ -1,20 +1,20 @@
-(function(module) {
+(function (module) {
 
   var indexView = {};
 
   var placeSearch, autocomplete;
 
-  indexView.initAutocomplete = function(ctx, next) {
+  indexView.initAutocomplete = function (ctx, next) {
     autocomplete = new google.maps.places.Autocomplete(
-            /** @type {!HTMLInputElement} */
-            (document.getElementById('autocomplete')), {
-              types: ['geocode']
-            });
+      /** @type {!HTMLInputElement} */
+      (document.getElementById('autocomplete')), {
+        types: ['geocode']
+      });
     next();
   };
-  indexView.geolocate = function(ctx, next) {
+  indexView.geolocate = function (ctx, next) {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
+      navigator.geolocation.getCurrentPosition(function (position) {
         var geolocation = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
@@ -25,10 +25,12 @@
         });
         autocomplete.setBounds(circle.getBounds());
       });
-      next();
+      if (next) {
+        next();
+      }
     };
 
-    $('#submit-index').on('click', function() {
+    $('#submit-index').on('click', function () {
       lat = autocomplete.getPlace().geometry.location.lat();
       lng = autocomplete.getPlace().geometry.location.lng();
 
@@ -37,11 +39,11 @@
     });
   };
 
-  $('#autocomplete').keypress(function(e){
+  $('#autocomplete').keypress(function (e) {
     if (e.which === 13) {
 
       // brian signs off on this - no point deducted
-      setTimeout(function() {
+      setTimeout(function () {
         $('#submit-index').click();
       }, 500);
     }
