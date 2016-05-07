@@ -28,39 +28,17 @@
   };
 
   mapController.findSchools = function (ctx, next) {
-    $('.loading').show();
-    var ref = new Firebase('https://intense-heat-7080.firebaseio.com/');
-    ref.child('schools').once('value', function (snapshot) {
-      ctx.schools = snapshot.val();
-      next();
-    });
+    School.fetchAll();
+    next();
   };
 
   mapController.renderSchools = function (ctx, next) {
-    keys = Object.keys(ctx.schools);
-    schoolArray = [];
-    keys.map(function (k) {
-      schoolArray.push({
-        key: k,
-        latLng: {
-          lat: ctx.schools[k].lat,
-          lng: ctx.schools[k].lng
-        },
-        school: ctx.schools[k].school_name,
-        percentPersonalExemption: Math.ceil(ctx.schools[k].percent_with_personal_exemption * 100),
-        percentReligiousExemption: Math.ceil(ctx.schools[k].percent_with_religious_exemption * 100),
-        percentMedicalExemption: Math.ceil(ctx.schools[k].percent_with_medical_exemption * 100),
-        percentTotalExemption: Math.ceil(ctx.schools[k].percent_with_any_exemption * 100),
-        percentCompletedImmunization: Math.ceil(ctx.schools[k].percent_complete_for_all_immunizations * 100),
-        totalEnrollment: ctx.schools[k].k_12_enrollment
-      });
       $('#home-container').hide();
       $('#map-container').show();
       $('.loading').hide();
 
-    });
 
-    var filteredSchoolArray = schoolArray.filter(function (k) {
+    var filteredSchoolArray = School.all.filter(function (k) {
       return (-123 < k.latLng.lng) && (-117 > k.latLng.lng) && (45 < k.latLng.lat) && (49 > k.latLng.lat);
     });
 
@@ -68,17 +46,20 @@
       var marker = new google.maps.Marker({
         map: map,
         position: school.latLng,
-        content: '<h1>' + school.school + '</h1><p>Personal Exemption: ' + school.percentPersonalExemption + '%</p><p>Religious Exemption: ' + school.percentReligiousExemption + '%</p><p>Medical Exemption: ' + school.percentMedicalExemption + '%</p><p>Total Exemption: ' + school.percentTotalExemption + '%</p><p>Completed Immunization: ' + school.percentCompletedImmunization + '%</p><p>Total Enrollment: ' + school.totalEnrollment + '</p>',
         key: school.key,
-        name1: school.school,
-        data1: [school.percentPersonalExemption, school.percentReligiousExemption, school.percentMedicalExemption, school.percentCompletedImmunization]
+        content: '<h1>' + school.school_name + '</h1><p>Personal Exemption: ' + Math.ceil(school.percent_with_personal_exemption * 100)+ '%</p><p>Religious Exemption: ' +   Math.ceil(school.percent_with_religious_exemption * 100) + '%</p><p>Medical Exemption: ' + Math.ceil(school.percent_with_medical_exemption * 100) + '%</p><p>Total Exemption: ' + Math.ceil(school.percent_with_any_exemption * 100) + '%</p><p>Completed Immunization:' + Math.ceil(school.percent_complete_for_all_immunizations * 100) + '%</p><p>Total Enrollment: ' + school.k_12_enrollment+ '</p>',
+        name1: school.school_name,
+        data1: [Math.ceil(school.percent_with_personal_exemption * 100),
+          Math.ceil(school.percent_with_religious_exemption * 100),
+          Math.ceil(school.percent_with_medical_exemption * 100),
+          Math.ceil(school.percent_complete_for_all_immunizations * 100)]
       });
 
       marker.addListener('click', function () {
         displayChart(marker.name1, marker.data1);
-        $('#chart-wrapper').slideToggle('slow');
-        $('#school-data h1').text(marker.name1);
-        $('#school-data').html(marker.content);
+        $('#chart-wrapper').fadeIn('slow');
+         $('#school-data h1').text(marker.name1);
+         $('#school-data').html(marker.content);
         $('footer').hide();
       });
 
