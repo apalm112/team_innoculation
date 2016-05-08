@@ -63,7 +63,7 @@
           Math.ceil(school.percent_with_religious_exemption * 100),
           Math.ceil(school.percent_with_medical_exemption * 100),
           Math.ceil(school.percent_complete_for_all_immunizations * 100)];
-        content = '<h1>' + school.school_name + '</h1><p>Personal Exemption: ' + Math.ceil(school.percent_with_personal_exemption * 100) + '%</p><p>Religious Exemption: ' +   Math.ceil(school.percent_with_religious_exemption * 100) + '%</p><p>Medical Exemption: ' + Math.ceil(school.percent_with_medical_exemption * 100) + '%</p><p>Total Exemption: ' + Math.ceil(school.percent_with_any_exemption * 100) + '%</p><p>Completed Immunization:' + Math.ceil(school.percent_complete_for_all_immunizations * 100) + '%</p><p>Total Enrollment: ' + school.k_12_enrollment + '</p>',
+        content = '<h1>' + school.school_name + '</h1><p>Personal Exemption: ' + Math.ceil(school.percent_with_personal_exemption * 100) + '%</p><p>Religious Exemption: ' + Math.ceil(school.percent_with_religious_exemption * 100) + '%</p><p>Medical Exemption: ' + Math.ceil(school.percent_with_medical_exemption * 100) + '%</p><p>Total Exemption: ' + Math.ceil(school.percent_with_any_exemption * 100) + '%</p><p>Completed Immunization:' + Math.ceil(school.percent_complete_for_all_immunizations * 100) + '%</p><p>Total Enrollment: ' + school.k_12_enrollment + '</p>',
         displayChart(school.school_name, data);
         $('#school-data h1').text(school.school_name);
         $('#school-data').html(content);
